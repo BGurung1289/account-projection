@@ -20,6 +20,7 @@ public class App {
 			System.out.println("1. Add Account");
 			System.out.println("2. Get Account");
 			System.out.println("3. Remove Account");
+			System.out.println("4. QUIT");
 			
 			choice = sc.nextInt();
 			if(choice == 1) {
