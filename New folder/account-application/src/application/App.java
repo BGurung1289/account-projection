@@ -9,6 +9,7 @@ public class App {
 		System.out.println("Select an option");
 		
 		a.menu();
+		
 	}
 	
 	public void menu() {
@@ -47,6 +48,7 @@ public class App {
 				testSer.removeAccount(id);
 			}
 			else {
+				System.out.println(testSer.toJSON());
 				System.out.println("Byebye");
 				quit = true;
 			}

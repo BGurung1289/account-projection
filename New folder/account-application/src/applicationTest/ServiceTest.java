@@ -2,6 +2,7 @@ package applicationTest;
 
 import static org.junit.Assert.*;
 
+import org.json.JSONObject;
 import org.junit.Test;
 
 import application.Account;
@@ -34,4 +35,20 @@ public class ServiceTest {
 		testService.removeAccount(1);
 		assertNull("match", testService.getAccount(1));
 	}
+	
+	@Test
+	public void testToJSON() {
+		Account acc = new Account("Adam","Eve",200);
+		testService.addAccount(acc);
+		String tojsn = testService.toJSON().toString();
+		String expected = "{\"200\":{\"name\":\"Adam Eve\",\"id\":200}}";
+		assertEquals("not possible", tojsn, expected);
+	}
+	
+//	@Test
+//	public void testLookFor() {
+//		Account acc = new Account("Adam","Eve", 150);
+//		assertEquals("not same", testService.lookFor("Adam").getFirst(), "Adam");
+//	}
+	
 }

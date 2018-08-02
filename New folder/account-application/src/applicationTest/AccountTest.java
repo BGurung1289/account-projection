@@ -25,5 +25,14 @@ public class AccountTest {
 		assertEquals("not matchin", testAcc.getId(), 150);
 	}
 	
+	@Test
+	public void testGetFirst() {
+		assertEquals("not same", testAcc.getFirst(), "Sam");
+	}
+	
+	@Test
+	public void testGetLast() {
+		assertEquals("not same", testAcc.getLast(), "Hart");
+	}
 	
 }

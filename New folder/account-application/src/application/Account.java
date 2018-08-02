@@ -15,6 +15,13 @@ public class Account {
 		return firstName + " " + lastName;
 	}
 	
+	public String getFirst() {
+		return firstName;
+	}
+	public String getLast() {
+		return lastName;
+	}
+	
 	public int getId() {
 		return accountNum;
 	}
