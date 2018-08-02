@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import org.junit.Test;
 
 import application.Account;
+import application.App;
 import application.Service;
 
 public class ServiceTest {
@@ -41,14 +42,24 @@ public class ServiceTest {
 		Account acc = new Account("Adam","Eve",200);
 		testService.addAccount(acc);
 		String tojsn = testService.toJSON().toString();
-		String expected = "{\"200\":{\"name\":\"Adam Eve\",\"id\":200}}";
+		String expected = "{\"200\":{\"last\":\"Eve\",\"name\":\"Adam Eve\",\"id\":200,\"first\":\"Adam\"}}";
 		assertEquals("not possible", tojsn, expected);
 	}
 	
-//	@Test
-//	public void testLookFor() {
-//		Account acc = new Account("Adam","Eve", 150);
-//		assertEquals("not same", testService.lookFor("Adam").getFirst(), "Adam");
-//	}
+	@Test
+	public void testLookFor() {
+		Account acc = new Account("Adam","Eve", 150);
+		Account ac = new Account("Adam","Sadnler", 1220);
+		testService.addAccount(acc);
+		testService.addAccount(ac);
+		assertEquals("not same", testService.lookFor("Adam"), 2);
+	}
+	
+	@Test
+	public void testMainMenu() {
+		App s = new App();
+		s.menu();
+		assertNotNull("null", s);
+	}
 	
 }

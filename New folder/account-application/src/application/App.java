@@ -4,27 +4,28 @@ import java.util.Scanner;
 
 public class App {
 
-	public static void main(String [] args) {
+	public static void main(String[] args) {
 		App a = new App();
-		System.out.println("Select an option");
-		
+		System.out.println("Enter a number correlating to the choice you want");
+
 		a.menu();
-		
+
 	}
-	
+
 	public void menu() {
 		boolean quit = false;
 		Scanner sc = new Scanner(System.in);
 		int choice;
 		Service testSer = new Service();
-		while(quit == false) {
+		while (quit == false) {
 			System.out.println("1. Add Account");
 			System.out.println("2. Get Account");
 			System.out.println("3. Remove Account");
-			System.out.println("4. QUIT");
+			System.out.println("4. Search Name");
+			System.out.println("5. Quit");
 			
 			choice = sc.nextInt();
-			if(choice == 1) {
+			if (choice == 1) {
 				String fName;
 				String lName;
 				int id;
@@ -36,23 +37,23 @@ public class App {
 				id = sc.nextInt();
 				Account addable = new Account(fName, lName, id);
 				testSer.addAccount(addable);
-			}
-			else if(choice == 2) {
+			} else if (choice == 2) {
 				System.out.println("Enter ID of account you want to search for ");
 				int id = sc.nextInt();
 				System.out.println(testSer.getAccount(id).getName());
-			}
-			else if(choice == 3){
+			} else if (choice == 3) {
 				System.out.println("Enter ID of account you want to remove");
 				int id = sc.nextInt();
 				testSer.removeAccount(id);
-			}
-			else {
+			} else if(choice == 4){
+				System.out.println("Enter Name you want to search for :");
+				String name = sc.next();
+				System.out.println(testSer.lookFor(name) + " instances found for : " + name);
+			}else {
 				System.out.println(testSer.toJSON());
-				System.out.println("Byebye");
+				System.out.println("Bye bye");
 				quit = true;
 			}
 		}
 	}
 }
-
